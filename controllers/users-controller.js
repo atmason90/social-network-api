@@ -67,6 +67,30 @@ module.exports = {
     },
 
     // add a friend
+    addFriend({ params }, res) {
+        Users.findOneAndUpdate(
+            { _id: params.id }, { $addToSet: { friends: params.friendId } }, { new: true })
+            .then(UsersData => {
+                if(!UsersData) {
+                    res.status(404).json({ message: 'Invalid User Id' });
+                    return;
+                }
+                res.json(UsersData);
+            })
+            .catch(err => res.status(400).json(err));
+    },
 
     // delete a friend
-}
+    deleteFriend({ params }, res) {
+        Users.findOneAndUpdate({ _id: params.id }, { $pull: { friends: params.friendId } }, { new: true })
+        .populate({ path: 'friends', select: '-__v' })
+        .then(UsersData => {
+            if(!UsersData) {
+                res.status(404).json({ message: 'Invalid User Id' });
+                return;
+            }
+            res.json(UsersData);
+        })
+        .catch(err => res.status(400).json(err));
+    }
+};
