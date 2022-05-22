@@ -67,5 +67,6 @@ module.exports = {
     },
 
     // add a friend
-    
+
+    // delete a friend
 }
