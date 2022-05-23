@@ -16,7 +16,7 @@ module.exports = {
     // get thoughts by id
     getThoughtsById({ params }, res) {
         Thoughts.findOne({ _id: params.id })
-        .populate({ path: 'reactions', select: '-__V' })
+        .populate({ path: 'reactions', select: '-__v' })
         .select('-__v')
         .then(ThoughtsData => {
             if(!ThoughtsData) {
