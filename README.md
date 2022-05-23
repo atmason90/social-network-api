@@ -22,6 +22,8 @@ Express.js was used for routing, a MongoDB database was used to store User and T
 
 This video displays all api routes being tested for functionality in Insomnia.
 
+https://user-images.githubusercontent.com/99947655/169758282-4292a54e-8e30-4d30-ab04-9b888abc0745.mp4
+
 ## Code Examples
 
 This example shows how I modeled my Users data.
